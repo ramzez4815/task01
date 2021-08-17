@@ -1,5 +1,5 @@
 module "network_vpc" {
-  source = "terraform-google-modules/network/google//modules/vpc"
+  source                  = "terraform-google-modules/network/google//modules/vpc"
   project_id              = var.project_id
   network_name            = var.gce_network_name
   auto_create_subnetworks = var.vpc_auto_create_subnetworks
@@ -7,14 +7,14 @@ module "network_vpc" {
 }
 
 module "network_subnets" {
-  source = "terraform-google-modules/network/google//modules/subnets"
+  source       = "terraform-google-modules/network/google//modules/subnets"
   project_id   = var.project_id
   network_name = var.gce_network_name
 
   subnets = [
     {
       subnet_name   = var.gce_subnetwork_name
-      subnet_ip     = var.gce_subnet_ip 
+      subnet_ip     = var.gce_subnet_ip
       subnet_region = var.gcp_region
     }
   ]
